@@ -1,0 +1,10 @@
+.infoCard{
+  height: 300px;
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid white;
+  margin: 10px;
+  background: #A2F4CB;
+ /* width: 50%;*/    
+}
