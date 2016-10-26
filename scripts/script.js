@@ -1,13 +1,11 @@
-var url = 'https://congress.api.sunlightfoundation.com/legislators?apikey=c08a60c041f24311b98b7ef7108628d6' //this is step 1
-	// we want to get the JSON from the website by using $.getJSON and assigning the 'url' as the parameters
-	// we want to name the var 'promise' because we will let the js know what to do with the data once the data is retrieved in the future 
-var promise = $.getJSON(url) // this is step 2
-infoCardNode = document.querySelector('.infoCard')
+
 
 	//now it is time to write the function that establishes what we should do with our data once we have it.
 
 
 var peopleToHTML = function (objectData){ //the peopleToHTML function is written 
+	console.log('object data>>>',objectData)
+	console.log('object datas length property>>>', objectData.length)
 	//after you determine how you want the response handler to handle the response
 	var htmlString = ''  // you create an empty html string to push the inner html into 
 	for(var i = 0; i<objectData.length; i ++){ // for every
@@ -31,17 +29,23 @@ var peopleToHTML = function (objectData){ //the peopleToHTML function is written
 }
 
 
-var handleResponse = function (someResponseData){ //establishing this function is step 3
-	// console.log(someResponseData)
+var handleResponse = function (someData){ //establishing this function is step 3
+	// console.log(someData)
 	//grab the 20 objects that are within the results array
-	var resultsObjArray = someResponseData.results //grabbing the results is the 4th step
-		// console.log(resultsObjArray) //this console.log shows me that we now have the 20 objects
+	var resultsObjArray = someData.results //grabbing the results is the 4th step
+	console.log(resultsObjArray)
+		// console.log(someData) //this console.log shows me that we now have the 20 objects
 		//now I'm thinking that we have to use a for loop to go throught the array to pick out specific data
-	htmlString = '<h1> House Bills </h1>' + peopleToHTML(someResponseData)
+	htmlString = '<h1> House Bills </h1>' + peopleToHTML(resultsObjArray)
 	infoCardNode.innerHTML = htmlString
+	console.log(htmlString)
 }
 
-
+var url = 'https://congress.api.sunlightfoundation.com/legislators?apikey=c08a60c041f24311b98b7ef7108628d6' //this is step 1
+	// we want to get the JSON from the website by using $.getJSON and assigning the 'url' as the parameters
+	// we want to name the var 'promise' because we will let the js know what to do with the data once the data is retrieved in the future 
+var promise = $.getJSON(url) // this is step 2
+var infoCardNode = document.querySelector('.infoCard')
 promise.then(handleResponse)
 
 console.log("hi people")

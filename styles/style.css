@@ -1,10 +1,12 @@
-.infoCard{
-  height: 300px;
-  width: 300px;
+.person{
+  height: 250px;
+  width: 250px;
   display: inline-block;
   vertical-align: top;
   border: 1px solid white;
   margin: 10px;
   background: #A2F4CB;
+  padding: 10px;
+  font-size: 12px;
  /* width: 50%;*/    
 }
